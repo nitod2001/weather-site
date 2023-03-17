@@ -1,5 +1,4 @@
-import { Provider } from "react";
-
+import { Provider } from "react-redux";
 import Card from "../components/Card";
 import store from "../store";
 
