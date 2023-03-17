@@ -12,7 +12,7 @@ export default function Card() {
   return (
     <div className="card">
       <FormInput />
-      {status === "" && <h1>Please type the Capital to get its weather.</h1>}
+      {status === "" && <h1>Please type the City to get its weather.</h1>}
       {status === LOADING && <h1>Loading...</h1>}
       {status === IDLE && (
         <>
