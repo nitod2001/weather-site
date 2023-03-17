@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import { Cityactions, fetchCity } from "../store/CitieSlice";
+import { Cityactions, fetchCity } from "../store/CitySlice";
 
 export default function FormInput() {
   const dispatch = useDispatch();
