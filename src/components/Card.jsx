@@ -1,18 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { IDLE, LOADING, REJECTED } from "../constants";
 import FormInput from "./FormInput";
 
 export default function Card() {
   const stateCity = useSelector((state) => state.city);
   console.log(stateCity);
+  const status = stateCity.status;
+  console.log(status);
 
   return (
     <div className="card">
       <FormInput />
-      <h2>Weather in {stateCity.cityName}</h2>
-      <h1>{stateCity.temparature}°C</h1>
-      <p>{stateCity.weather}</p>
-      <p>Humidity: {stateCity.humidity}%</p>
+      {status === "" && <h1>Please type the Capital to get its weather.</h1>}
+      {status === LOADING && <h1>Loading...</h1>}
+      {status === IDLE && (
+        <>
+          <h2>Weather in {stateCity.cityName}</h2>
+          <h1>{stateCity.temparature}°C</h1>
+          <p>Weather: {stateCity.weather}</p>
+          <p>Humidity: {stateCity.humidity}%</p>{" "}
+        </>
+      )}
+      {status === REJECTED && <h1>Not Found the City</h1>}
     </div>
   );
 }

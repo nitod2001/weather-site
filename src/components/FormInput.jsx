@@ -14,7 +14,7 @@ export default function FormInput() {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(Cityactions.changeCityState(inputCity));
-    dispatch(fetchCity());
+    dispatch(fetchCity(inputCity));
     setInputCity("");
   };
   return (
