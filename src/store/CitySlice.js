@@ -51,9 +51,10 @@ export const fetchCity = createAsyncThunk(
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=bfe167c8a78c6754d567fe2cafdcf14f`
     );
-    console.log(res);
+    // console.log(res);
     const data = await res.json();
     // return data;
+    // console.log(data);
 
     if (!res.ok) {
       return rejected;

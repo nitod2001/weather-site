@@ -1,13 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { IDLE, LOADING, REJECTED } from "../constants";
+import { fetchCities } from "../store/CitiesSlice";
 import FormInput from "./FormInput";
 
 export default function Card() {
   const stateCity = useSelector((state) => state.city);
-  console.log(stateCity);
+  // console.log(stateCity);
   const status = stateCity.status;
-  console.log(status);
+  // console.log(status);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCities());
+  }, []);
 
   return (
     <div className="card">
