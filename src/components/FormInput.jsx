@@ -65,6 +65,9 @@ export default function FormInput() {
       <input
         required
         onChange={inputChangeHandler}
+        // onBlur={() => {
+        //   setNewArrayOfCities([]);
+        // }}
         type="text"
         placeholder="Search"
         value={inputCity}

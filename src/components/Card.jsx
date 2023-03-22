@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { IDLE, LOADING, REJECTED } from "../constants";
 import { fetchCities } from "../store/CitiesSlice";
 import FormInput from "./FormInput";
+import {
+  faCloud,
+  faCloudRain,
+  faSnowflake,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Card() {
   const stateCity = useSelector((state) => state.city);
@@ -15,6 +22,20 @@ export default function Card() {
     dispatch(fetchCities());
   }, []);
 
+  const cloudWeather = stateCity.weather.toLowerCase() === "clouds" && (
+    <FontAwesomeIcon icon={faCloud} />
+  );
+  const rainWeather = stateCity.weather.toLowerCase() === "rain" && (
+    <FontAwesomeIcon icon={faCloudRain} />
+  );
+  const snowWeather = stateCity.weather.toLowerCase() === "snow" && (
+    <FontAwesomeIcon icon={faSnowflake} />
+  );
+  const clearWeather = stateCity.weather.toLowerCase() === "clear" && (
+    <FontAwesomeIcon icon={faSun} />
+  );
+  const weatherList = [clearWeather, cloudWeather, snowWeather, rainWeather];
+
   return (
     <div className="card">
       <FormInput />
@@ -24,7 +45,9 @@ export default function Card() {
         <>
           <h2>Weather in {stateCity.cityName}</h2>
           <h1>{stateCity.temparature}°C</h1>
-          <p>Weather: {stateCity.weather}</p>
+          <p>
+            Weather: {weatherList} {stateCity.weather}
+          </p>
           <p>Humidity: {stateCity.humidity}%</p>{" "}
         </>
       )}
