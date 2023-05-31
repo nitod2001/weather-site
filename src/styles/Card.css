@@ -39,7 +39,7 @@ input {
 }
 
 .options-block {
-    display: none;
+    /* display: none; */
     z-index: 10;
     background-color: #fff;
     color: #000;
@@ -54,6 +54,7 @@ input {
 .option-item {
     padding: 10px;
     border-bottom: 1px solid #000;
+    cursor: pointer;
 }
 
 button {
