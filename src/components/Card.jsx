@@ -22,19 +22,36 @@ export default function Card() {
     dispatch(fetchCities());
   }, []);
 
-  const cloudWeather = stateCity.weather.toLowerCase() === "clouds" && (
-    <FontAwesomeIcon icon={faCloud} />
-  );
-  const rainWeather = stateCity.weather.toLowerCase() === "rain" && (
-    <FontAwesomeIcon icon={faCloudRain} />
-  );
-  const snowWeather = stateCity.weather.toLowerCase() === "snow" && (
-    <FontAwesomeIcon icon={faSnowflake} />
-  );
-  const clearWeather = stateCity.weather.toLowerCase() === "clear" && (
-    <FontAwesomeIcon icon={faSun} />
-  );
-  const weatherList = [clearWeather, cloudWeather, snowWeather, rainWeather];
+  const getWeatherIcon = (weather) => {
+    switch (weather.toLowerCase()) {
+      case "clouds": {
+        return <FontAwesomeIcon icon={faCloud} />;
+      }
+      case "rain": {
+        return <FontAwesomeIcon icon={faCloudRain} />;
+      }
+      case "snow": {
+        return <FontAwesomeIcon icon={faSnowflake} />;
+      }
+      case "clear": {
+        return <FontAwesomeIcon icon={faSun} />;
+      }
+    }
+  };
+
+  // const cloudWeather = stateCity.weather.toLowerCase() === "clouds" && (
+  //   <FontAwesomeIcon icon={faCloud} />
+  // );
+  // const rainWeather = stateCity.weather.toLowerCase() === "rain" && (
+  //   <FontAwesomeIcon icon={faCloudRain} />
+  // );
+  // const snowWeather = stateCity.weather.toLowerCase() === "snow" && (
+  //   <FontAwesomeIcon icon={faSnowflake} />
+  // );
+  // const clearWeather = stateCity.weather.toLowerCase() === "clear" && (
+  //   <FontAwesomeIcon icon={faSun} />
+  // );
+  // const weatherList = [clearWeather, cloudWeather, snowWeather, rainWeather];
 
   return (
     <div className="card">
@@ -46,7 +63,8 @@ export default function Card() {
           <h2>Weather in {stateCity.cityName}</h2>
           <h1>{stateCity.temparature}°C</h1>
           <p>
-            Weather: {weatherList} {stateCity.weather}
+            {/* Weather: {weatherList} {stateCity.weather} */}
+            Weather: {getWeatherIcon(stateCity.weather)} {stateCity.weather}
           </p>
           <p>Humidity: {stateCity.humidity}%</p>{" "}
         </>

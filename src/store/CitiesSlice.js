@@ -22,6 +22,7 @@ export const fetchCities = createAsyncThunk(
     const data = await res.json();
     const Cityarray = [];
     data.data.map((item) => {
+      // console.log(item.country);
       Cityarray.push(...item.cities);
     });
     return Cityarray;

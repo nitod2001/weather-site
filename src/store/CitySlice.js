@@ -32,6 +32,7 @@ const CitySlice = createSlice({
       .addCase(fetchCity.fulfilled, (state, action) => {
         state.status = IDLE;
         const Cityinfor = action.payload;
+        // console.log(Cityinfor);
         const temparature = Cityinfor.main.temp - 273.15;
         const humidity = Cityinfor.main.humidity;
         const weather = Cityinfor.weather[0].main;
